@@ -1,0 +1,7 @@
+Changes
+Makefile.PL
+MANIFEST
+README
+t/OMA-Download-OTA.t
+lib/OMA/Download/OTA.pm
+META.yml                                 Module meta-data (added by MakeMaker)
