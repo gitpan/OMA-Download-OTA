@@ -2,7 +2,7 @@ package OMA::Download::OTA;
 use strict;
 =head1 NAME
 
-OMA::Download::OTA - Perl extension for describing download descriptor objects according to Open Mobile Alliance Download OTA 1.0 specification.
+OMA::Download::OTA - Perl extension for describing download descriptor objects according to OMA Download OTA 1.0 specification.
 
 =head1 SYNOPSIS
 
@@ -15,7 +15,7 @@ OMA::Download::OTA - Perl extension for describing download descriptor objects a
   
 =head1 DESCRIPTION
 
-Complete implementation of Opem Mobile Alliance Download Over The Air 1.0 specification.
+Complete implementation of the Open Mobile Alliance Download Over The Air 1.0 specification.
 
 
 =head1 CONSTRUCTOR
@@ -25,7 +25,7 @@ Complete implementation of Opem Mobile Alliance Download Over The Air 1.0 specif
 =cut
 
 BEGIN {
-    $OMA::Download::OTA::VERSION = '1.00.03';
+    $OMA::Download::OTA::VERSION = '1.00.04';
 }
 
 sub new {
@@ -73,7 +73,6 @@ sub name {
     $self->{name} = $val if $val;
     $self->{name}
 }
-=over 4
 
 =item B<vendor> - Download Vendor Name
 
@@ -83,7 +82,6 @@ sub vendor {
     $self->{vendor} = $val if $val;
     $self->{vendor}
 }
-=over 4
 
 =item B<type> - Download Type
 
@@ -93,7 +91,6 @@ sub type {
     $self->{type} = $val if $val;
     $self->{type}
 }
-=over 4
 
 =item B<size> - Download File Size
 
@@ -103,7 +100,6 @@ sub size {
     $self->{size} = $val if $val;
     $self->{size}
 }
-=over 4
 
 =item B<description> - Download Description
 
@@ -113,7 +109,6 @@ sub description {
     $self->{description} = $val if $val;
     $self->{description}
 }
-=over 4
 
 =item B<objectURI> - Download Object URI
 
@@ -123,7 +118,6 @@ sub objectURI {
     $self->{objectURI} = $val if $val;
     $self->{objectURI}
 }
-=over 4
 
 =item B<installNotifyURI> - Intall notificatition URI 
 
@@ -133,7 +127,6 @@ sub installNotifyURI {
     $self->{installNotifyURI} = $val if $val;
     $self->{installNotifyURI}
 }
-=over 4
 
 =item B<nextURL> - Next URL 
 
@@ -143,7 +136,6 @@ sub nextURL {
     $self->{nextURL} = $val if $val;
     $self->{nextURL}
 }
-=over 4
 
 =item B<DDVersion> - Download descriptor version. Defaults to 1.0.
 
@@ -153,7 +145,6 @@ sub DDVersion {
     $self->{DDVersion} = $val if $val;
     $self->{DDVersion}
 }
-=over 4
 
 =item B<infoURL> - Donwload Info URL
 
@@ -163,7 +154,6 @@ sub infoURL {
     $self->{infoURL} = $val if $val;
     $self->{infoURL}
 }
-=over 4
 
 =item B<iconURI> - Download icon URI 
 
@@ -173,7 +163,6 @@ sub iconURI {
     $self->{iconURI} = $val if $val;
     $self->{iconURI}
 }
-=over 4
 
 =item B<installParam> - Intall Parameter
 
@@ -183,7 +172,6 @@ sub installParam {
     $self->{installParam} = $val if $val;
     $self->{installParam}
 }
-=over 4
 
 =item B<mime> - Returns the Download Descriptor MIME type 
 
@@ -191,6 +179,8 @@ sub installParam {
 sub mime {
     'application/vnd.oma.dd+xml'
 }
+=back
+
 =head1 METHODS
 
 =over 4
@@ -229,6 +219,8 @@ sub _in_element {
 }
 1;
 __END__
+
+=back
 
 =head1 SEE ALSO
 
