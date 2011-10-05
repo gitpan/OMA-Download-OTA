@@ -26,5 +26,5 @@ BEGIN { use_ok('OMA::Download::OTA') };
         nextURL          => 'http://example.com/thanks',
     );
     
-    print my $res = $dota->get;
+    my $res = $dota->packit;
     

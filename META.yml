@@ -1,10 +1,10 @@
 --- #YAML:1.0
 name:               OMA-Download-OTA
-version:            1.00.04
-abstract:           Perl extension for describing download descriptor objects according to OMA Download OTA 1.0 specification.
+version:            1.00.06
+abstract:           Perl extension for creating download descriptor objects according to the OMA Download OTA 1.0 specification.
 author:
-    - Bernard Nauwelaerts <bpn@localhost>
-license:            unknown
+    - Bernard Nauwelaerts <bpgn@cpan.org>
+license:            GPL_3
 distribution_type:  module
 configure_requires:
     ExtUtils::MakeMaker:  0

@@ -1,33 +1,27 @@
 package OMA::Download::OTA;
 use strict;
+BEGIN {
+    $OMA::Download::OTA::VERSION = '1.00.06';
+}
 =head1 NAME
 
-OMA::Download::OTA - Perl extension for describing download descriptor objects according to OMA Download OTA 1.0 specification.
+OMA::Download::OTA - Perl extension for creating download descriptor objects according to the OMA Download OTA 1.0 specification.
+
+=head1 DESCRIPTION
+
+Complete implementation of the Open Mobile Alliance Download Over The Air 1.0 specification.
 
 =head1 SYNOPSIS
 
   use OMA::Download::OTA;
   
-  my $ota = OMA::Download::OTA->new(%properties);
-  print $ota->mime."\n\n"
-  print $ota->get();
-
-  
-=head1 DESCRIPTION
-
-Complete implementation of the Open Mobile Alliance Download Over The Air 1.0 specification.
-
-
 =head1 CONSTRUCTOR
 
+=head2 new
 
+  my $ota = OMA::Download::OTA->new(%properties);
 
 =cut
-
-BEGIN {
-    $OMA::Download::OTA::VERSION = '1.00.04';
-}
-
 sub new {
     my ($class, %arg)=@_;
     my $self={
@@ -63,9 +57,13 @@ sub new {
 }
 =head1 PROPERTIES
 
-=over 4
+=head2 name
 
-=item B<name> - Download Name
+Get or set the download name
+
+  print $ota->name;
+  
+  $ota->name('Nice download');
 
 =cut
 sub name {
@@ -74,7 +72,13 @@ sub name {
     $self->{name}
 }
 
-=item B<vendor> - Download Vendor Name
+=head2 vendor
+
+Get or set the download vendor name
+
+  print $ota->vendor;
+  
+  $ota->vendor('My Cool Company');
 
 =cut
 sub vendor {
@@ -83,7 +87,13 @@ sub vendor {
     $self->{vendor}
 }
 
-=item B<type> - Download Type
+=head2 type
+
+Get or set the download MIME type
+
+  print $ota->type;
+  
+  $ota->type('image/gif');
 
 =cut
 sub type {
@@ -92,25 +102,43 @@ sub type {
     $self->{type}
 }
 
-=item B<size> - Download File Size
+=head2 size
+
+Get or set the download file size
+
+  print $ota->size;
+  
+  $ota->size(65536);
 
 =cut
 sub size {
     my ($self, $val)=@_;
-    $self->{size} = $val if $val;
+    $self->{size} = $val if defined $val;
     $self->{size}
 }
 
-=item B<description> - Download Description
+=head2 description
+
+Get or set the download description
+
+  print $ota->description
+  
+  $ota->description('A nice picture of the Moon');
 
 =cut
 sub description {
     my ($self, $val)=@_;
-    $self->{description} = $val if $val;
+    $self->{description} = $val if defined $val;
     $self->{description}
 }
 
-=item B<objectURI> - Download Object URI
+=head2 objectURI
+
+Get or set the download object URI
+
+  print $ota->objectURI;
+  
+  $ota->objectURI('http://example.com/image123.gif');
 
 =cut
 sub objectURI {
@@ -119,25 +147,43 @@ sub objectURI {
     $self->{objectURI}
 }
 
-=item B<installNotifyURI> - Intall notificatition URI 
+=head2 installNotifyURI
+
+Get or set the intall notificatition URI.
+
+  print $ota->installNotifyURI;
+  
+  $ota->installNotifyURI('http://example.com/notify.cgi');
 
 =cut
 sub installNotifyURI {
     my ($self, $val)=@_;
-    $self->{installNotifyURI} = $val if $val;
+    $self->{installNotifyURI} = $val if defined $val;
     $self->{installNotifyURI}
 }
 
-=item B<nextURL> - Next URL 
+=head2 nextURL
+
+Get or set the next URL 
+
+  print $ota->nextURL;
+  
+  $ota->nextURL('http://example.com/complete.html');
 
 =cut
 sub nextURL {
     my ($self, $val)=@_;
-    $self->{nextURL} = $val if $val;
+    $self->{nextURL} = $val if defined $val;
     $self->{nextURL}
 }
 
-=item B<DDVersion> - Download descriptor version. Defaults to 1.0.
+=head2 DDVersion
+
+Get or set the download descriptor version. Defaults to 1.0.
+
+  print $ota->DDVersion;
+  
+  $ota->DDVersion('1.0');
 
 =cut
 sub DDVersion {
@@ -146,49 +192,68 @@ sub DDVersion {
     $self->{DDVersion}
 }
 
-=item B<infoURL> - Donwload Info URL
+=head2 infoURL
+
+Get or set the donwload info URL
+
+  print $ota->infoURL;
+  
+  $ota->infoURL('http://example.com/moon.html');
 
 =cut
 sub infoURL {
     my ($self, $val)=@_;
-    $self->{infoURL} = $val if $val;
+    $self->{infoURL} = $val if defined $val;
     $self->{infoURL}
 }
 
-=item B<iconURI> - Download icon URI 
+=head2 iconURI
+
+Get or set the download icon URI
+
+  print $ota->iconURI;
+  
+  $ota->iconURI('http://example.com/moon.gif');
 
 =cut
 sub iconURI {
     my ($self, $val)=@_;
-    $self->{iconURI} = $val if $val;
+    $self->{iconURI} = $val if defined $val;
     $self->{iconURI}
 }
 
-=item B<installParam> - Intall Parameter
+=head2 installParam
+
+Get or set intall parameter
 
 =cut
 sub installParam {
     my ($self, $val)=@_;
-    $self->{installParam} = $val if $val;
+    $self->{installParam} = $val if defined $val;
     $self->{installParam}
 }
 
-=item B<mime> - Returns the Download Descriptor MIME type 
+=head2 mime
+
+Returns the Download Descriptor MIME type
+
+  print $ota->mime;
 
 =cut
 sub mime {
     'application/vnd.oma.dd+xml'
 }
-=back
 
 =head1 METHODS
 
-=over 4
+=head2 packit
 
-=item B<get> - Returns the Download Descriptor
+Returns the Download Descriptor
+
+  print $ota->packit;
 
 =cut
-sub get {
+sub packit {
     my ($self)=@_;
     my $res='';
     for my $p (keys %{$self->{properties}}) {
@@ -219,9 +284,6 @@ sub _in_element {
 }
 1;
 __END__
-
-=back
-
 =head1 SEE ALSO
 
 OMA Download OTA Specifications
